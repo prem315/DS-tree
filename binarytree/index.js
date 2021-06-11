@@ -39,7 +39,6 @@ class BinaryTree {
         } else if(val < currentNode.data) {
             currentNode.left = this.insertToBinary(currentNode.left, val)
         } else {
-            console.log("right")
             currentNode.right = this.insertToBinary(currentNode.right, val)
         }
         return currentNode
@@ -52,15 +51,27 @@ class BinaryTree {
         }
         this.insertToBinary(this.root, val) 
     }
+
+    preOrderTravel(currentNode) {
+        console.log(currentNode);
+        if (currentNode!==null) {
+            console.log(currentNode.data);
+            this.preOrderTravel(currentNode.left);
+            this.preOrderTravel(currentNode.right);
+        }
+    }
 }
 
 
 let tree = new BinaryTree()
 
-
-tree.insert(10);
 tree.insert(4);
-// tree.insert(12);
-tree.insertRecursively(12);
+tree.insert(9);
+tree.insert(5);
+tree.insert(2);
+tree.insert(8);
+tree.insert(12);
+tree.insert(10);
+tree.insert(14);
 
-console.log(tree);
+tree.preOrderTravel(tree.root);
